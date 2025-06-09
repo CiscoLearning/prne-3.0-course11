@@ -1,0 +1,15 @@
+stages:
+  - test
+
+thousandeyes-automation:
+  stage: test
+  image: python:3.11-slim
+  before_script:
+    - pip install --no-cache-dir -r requirements.txt
+    - pip install pytest
+  script:
+    - pytest
+  variables:
+    TE_API_TOKEN: ${TE_API_TOKEN}
+    TEST_NAME: "Cisco.com Test"
+    TARGET: "https://cisco.com"
